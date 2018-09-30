@@ -1,0 +1,22 @@
+Work Plan
+
+Understand what ALU is 1.5 hr: 10/1/18
+	Create truth table for each operation
+	ADD, SUB, XOR, SLT, AND, NAND, NOR, OR
+	Decide how we’ll construct ALU 
+	Tradeoffs?Delay / Performance
+	Have drawn circuit for ALU 
+Write Test Bench: 1 hr: 10/1/18
+	Make circuit in Verilog 1.5 hr: 10/3/18
+Write README 1 hr: 10/5/18
+Write Report 2 hr: 10/5/18
+	Implementation
+	Explain our verilog implementation
+	Test Results
+	Test Bench Truth Table with expected
+	Timing Analysis
+	Calculated propagation delay
+	Simulated propagation delay
+	Work Plan Reflection
+		Did we finish tasks on time as we predicted?
+		How can we improve better at planning next time?
