@@ -1,10 +1,4 @@
-// Adder circuit
-
-`define AND and #50
-`define OR or #50
 `define NOT not #50
-`define XOR xor #50
-
 `define ADD  3'd0
 `define SUB  3'd1
 `define XOR  3'd2
@@ -21,9 +15,10 @@ output reg	address0,
 output reg	address1,
 output reg invert,
 input[2:0]	ALUcommand
-)
+);  
 
-  always @(ALUcommand) begin
+
+  always @(ALUcommand) begin;
     case (ALUcommand)
       `ADD:  begin address0 = 0; address1=0; invert = 0; end
       `SUB:  begin address0 = 0; address1=0; invert = 1; end
@@ -40,16 +35,18 @@ endmodule
 module structuralMultiplexer
 (
     output out,
-    input address0, address1,
+    input addr0, addr1,
     input in0, in1, in2, in3
 );
-    wire notA0, notA1, notA0andnotA1, notA0andA1, A0andnotA1, A0andA1;
+
+    wire notA0, notA1, A0andA1, notA0andA1, notA0andnotA1;
     wire in0and, in1and, in2and, in3and;
-    `NOT not1(notA0, address0);
-    `NOT not2(notA1, address1);
-    `AND and1(A0andA1, address0, address1);
-    `AND and2(A0andnotA1, address0, notA1);
-    `AND and3(notA0andA1, notA0, address1);
+
+    `NOT not1(notA0, addr0);
+    `NOT not2(notA1, addr1);
+    `AND and1(A0andA1, addr0, addr1);
+    `AND and2(A0andnotA1, addr0, notA1);
+    `AND and3(notA0andA1, notA0, addr1);
     `AND and4(notA0andnotA1, notA0, notA1);
     `AND and5(in0and, in0, notA0andnotA1);
     `AND and6(in1and, in1, A0andnotA1);
@@ -75,10 +72,10 @@ module structuralBitSlice
  ALUcontrolLUT mylut(address0, address1, invert, control);
 
  // values for sum, subtract, and slt
- 'NOT notGate(notControl1, control[1]);
- 'NOT notGate2(notControl2, control[2]);
- 'AND andGate(subtract, control[0], notControl1, notControl2);
- 'XOR xorGate(newB, subtract, b);
+ `NOT notGate(notControl1, control[1]);
+ `NOT notGate2(notControl2, control[2]);
+ `AND andGate(subtract, control[0], notControl1, notControl2);
+ `XOR xorGate(newB, subtract, b);
  `XOR xorGate1(AxorB2, a, newB);
  `XOR xorGate2(sumval, AxorB2, carryin);
  `AND andGate1(AB, a, b);
@@ -86,14 +83,14 @@ module structuralBitSlice
  `OR orGate( carryout, AB, AxorBC);
 
  // values for or and nor
- 'OR orGate(AorB, a, b);
- 'XOR xorGate4(noror, invert, AorB);
+ `OR orGate(AorB, a, b);
+ `XOR xorGate4(noror, invert, AorB);
 
  // values for and and nand
-'XOR xorGate3(nandand, invert, AB);
+ `XOR xorGate3(nandand, invert, AB);
 
 // value for xor
-'XOR xorGate5(AxorB, a, b);
+ `XOR xorGate5(AxorB, a, b);
 
  structuralMultiplexer mymux(sum, address0, address1, sumval, noror, nandand, AxorB);
 
