@@ -1,12 +1,16 @@
+`define AND and #50
+`define OR or #50
 `define NOT not #50
-`define ADD  3'd0
-`define SUB  3'd1
-`define XOR  3'd2
-`define SLT  3'd3
-`define AND  3'd4
-`define NAND 3'd5
-`define NOR  3'd6
-`define OR   3'd7
+`define XOR xor #50
+
+`define ADD_ALU  3'd0
+`define SUB_ALU  3'd1
+`define XOR_ALU  3'd2
+`define SLT_ALU  3'd3
+`define AND_ALU  3'd4
+`define NAND_ALU 3'd5
+`define NOR_ALU  3'd6
+`define OR_ALU   3'd7
 
 
 module ALUcontrolLUT
@@ -15,19 +19,19 @@ output reg	address0,
 output reg	address1,
 output reg invert,
 input[2:0]	ALUcommand
-);  
+);
 
 
   always @(ALUcommand) begin;
     case (ALUcommand)
-      `ADD:  begin address0 = 0; address1=0; invert = 0; end
-      `SUB:  begin address0 = 0; address1=0; invert = 1; end
-      `XOR:  begin address0 = 1; address1=1; invert = 0; end
-      `SLT:  begin address0 = 0; address1=0; invert = 1; end
-      `AND:  begin address0 = 0; address1=1; invert = 0; end
-      `NAND: begin address0 = 0; address1=1; invert = 1; end
-      `NOR:  begin address0 = 1; address1=0; invert = 1; end
-      `OR:   begin address0 = 1; address1=0; invert = 0; end
+      `ADD_ALU:  begin address0 = 0; address1=0; invert = 0; end
+      `SUB_ALU:  begin address0 = 0; address1=0; invert = 1; end
+      `XOR_ALU:  begin address0 = 1; address1=1; invert = 0; end
+      `SLT_ALU:  begin address0 = 0; address1=0; invert = 1; end
+      `AND_ALU:  begin address0 = 0; address1=1; invert = 0; end
+      `NAND_ALU: begin address0 = 0; address1=1; invert = 1; end
+      `NOR_ALU:  begin address0 = 1; address1=0; invert = 1; end
+      `OR_ALU:   begin address0 = 1; address1=0; invert = 0; end
     endcase
   end
 endmodule
