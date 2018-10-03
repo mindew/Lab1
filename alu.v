@@ -5,15 +5,35 @@
 `define AND3 and #30
 `define NOT not #10
 
+
+// *************defined gates from bitslice.v**************
+//`define AND and #20
+// `define OR or #20
+// `define NOT not #10
+// `define XOR xor #20
+// `define AND3 and #30
+// `define OR4 or #40
+
+// `define ADD_ALU  3'd0
+// `define SUB_ALU  3'd1
+// `define XOR_ALU  3'd2
+// `define SLT_ALU  3'd3
+// `define AND_ALU  3'd4
+// `define NAND_ALU 3'd5
+// `define NOR_ALU  3'd6
+// `define OR_ALU   3'd7
+// *********************************************************
+
+
 module ALU
 (
-output[31:0]  result,
-output        carryout,
-output        zero,
-output        overflow,
-input[31:0]   operandA,
-input[31:0]   operandB,
-input[2:0]    command
+output[31:0]  result,     // result
+output        carryout,   // carryout bitstream
+output        zero,       // returns 1 if the answer is all zeros, 0 other cases
+output        overflow,   // overflow bitstream
+input[31:0]   operandA,   // first input bitstream
+input[31:0]   operandB,   // second input bitstream
+input[2:0]    command     // 3 bits control signal
 );
 
   wire carryout1, notCommand1, notCommand2, subtract;

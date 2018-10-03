@@ -1,16 +1,17 @@
-// Adder testbench
+// ALU testbench
 `timescale 1 ns / 1 ps
 `include "alu.v"
 
 
 module manualTestALUSlice();
 
-  reg [31:0]   operandA, operandB;
-  reg [2:0]    command;
-  wire [31:0]  result;
+  wire[31:0]  result;
   wire        carryout, zero, overflow;
+  reg[31:0]   operandA, operandB;
+  reg[2:0]    command; 
 
 
+  // Instantiate ALU register file
   ALU alu(.result(result), .carryout(carryout), .overflow(overflow), .operandA(operandA), .operandB(operandB), .command(command));
 
   initial begin
@@ -19,7 +20,7 @@ module manualTestALUSlice();
     command=3'b100; // TODO: PUT COMMMAND HERE FOR ADDING
     #1000
     $display("%b | result| ", result);
-    $display("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTt",);
+    $display("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",);
   end
 
 
@@ -27,19 +28,22 @@ endmodule
 
 
 module testALU();
-    wire [31:0] operandA;
-    wire [31:0] operandB;
-    wire [2:0] command;
-    wire [31:0] result;
-    wire carryout;
-    wire zero;
-    wire overflow;
-    reg   begintest; 
+    wire [31:0] operandA;     // first bitstream
+    wire [31:0] operandB;     // second bitstream
+    wire [2:0] command;       // 3 bits control signal
+    wire [31:0] result;       // result 
+    wire carryout;            // carryout bits
+    wire zero;                
+    wire overflow;            // overflow bits
+    reg   begintest;      
     wire    endtest;     
     wire    alupassed; 
 
+    // Instantiate ALU register file 
     ALU alu(.result(result), .carryout(carryout), .overflow(overflow), .operandA(operandA), .operandB(operandB), .command(command));
 
+
+    // Instantiate test bench
     lab1testbench tester
     ( 
         .begintest(begintest),
@@ -55,6 +59,7 @@ module testALU();
     );
 
 
+    // Test harness asserts 'begintest' for 1000 time stemps, starting at time 10
     initial begin
         begintest=0;
         #10;
@@ -62,9 +67,9 @@ module testALU();
         #1000;
     end
     
-
+    // Display test results ('alupassed' signal) once 'endtest' goes high
     always @(endtest) begin
-        $display("ALU passed?: %b", alupassed);
+        $display("ALU test passed?: %b", alupassed);
     end
 
 
