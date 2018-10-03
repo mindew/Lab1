@@ -2,6 +2,9 @@
 `timescale 1 ns / 1 ps
 `include "bitslice.v"
 
+// For other tests such as XOR, AND, OR, NAND, NOR
+// do we need to include other modules? we don't use sum and carry in 
+
 // module manualTestBitSlice();
 
 //   reg [3:0] control;
@@ -51,7 +54,7 @@ module testBitSlice();
       .carryin(carryin)
     );
 
-
+    // Test harness asserts 'begintest' for 1000 time steps, starting at time 10
     initial begin
         begintest=0;
         #10;
@@ -85,7 +88,7 @@ output reg carryin
 );
 
   // Initialize register driver signals
-  initial begin // all the inpupts
+  initial begin // all the inputs
     control=3'b000;
     a=0;
     b=0;
@@ -185,6 +188,14 @@ output reg carryin
   ////////////////////////////// XOR TESTS //////////////////////////////////////////////////////
     
     $display("///////////// XOR TESTS /////////////////////////");
+
+  // Test Case 1: 
+  a=1;b=1;carryin=0;control[0]=0;control[1]=1;control[2]=1; #1000
+
+  if(( sum !== 0) || (carryout !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 4 Failed 1-1");
+  end
 
   #5
   endtest = 1;

@@ -47,9 +47,9 @@ input[2:0]    command     // 3 bits control signal
 
   genvar i;
   generate
-    for (i=1; i<31; i=i+2)
+    for (i=1; i<31; i=i+1)
     begin:genblock
-      wire carryout2;
+      wire _carryout2;
       structuralBitSlice bitslice1(result[i], carryout2, command, operandA[i], operandB[i], carryout1);
       structuralBitSlice bitslice2(result[i+1], carryout1, command, operandA[i+1], operandB[i+1], carryout2);
     end

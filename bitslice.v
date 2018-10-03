@@ -24,6 +24,7 @@ input[2:0]	ALUcommand
 );
 
 
+// Instantiate the look up table with always command and define cases
   always @(ALUcommand) begin;
     case (ALUcommand)
       `ADD_ALU:  begin address0 = 0; address1=0; invert = 0; end
