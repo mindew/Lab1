@@ -17,14 +17,12 @@
 //   // Cases 1-4 Extremes
 //   a=1;b=0;carryin=0;control[0]=0;control[1]=0;control[2]=1; control[3]=0;#1000
 //   $display("%b | carryout | %b | sum ", carryout, sum );
-// $display("%b SUM OUTPUT", control);
+//   $display("%b SUM OUTPUT", control);
 //   $display("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTt",);
 //   end
 
 
-
-
-//endmodule
+// endmodule
 
 
 module testBitSlice();
@@ -39,8 +37,6 @@ module testBitSlice();
     wire    bitpassed; 
 
     structuralBitSlice bitslice(.sum(sum), .carryout(carryout), .control(control), .a(a), .b(b), .carryin(carryin));
-
-
 
     testbenchBitSlice tester
     ( 
@@ -97,146 +93,98 @@ output reg carryin
   end
 
   // Once 'begintest' is asserted, start running test cases
-  always @(begintest) begin // always @(posedge begintest) begin
+  initial @(begintest) begin // always @(posedge begintest) begin
     endtest = 0;
     bitpassed = 1;
-    #10
-
-////////////////////////////// ADD TESTS //////////////////////////////////////////////////////
+    #50
 
  $display("///////////// ADD TESTS /////////////////////////");
 
-
   // Test Case 1: 
-    control=3'b000;
-    a=0;
-    b=0;
-    carryin=0; // ADD
+   a=0;b=0;carryin=0;control[0]=0;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 0) || (carryout !== 0)) begin // need to add (zero !== 0) and overflow?
+  if(( sum !== 0) || (carryout !== 0)) begin
     bitpassed = 0;
     $display("Test Case 1 Failed 0+0");
-    $display("%b SUM OUTPUT", sum);
   end
-
-
 
   // Test Case 2: 
-    control=3'b000;
-    a=1;
-    b=0;
-    carryin=0; // ADD
+  a=1;b=0;carryin=0;control[0]=0;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 1) || (carryout !== 0)) begin // need to add (zero !== 0) and overflow?
+  if(( sum !== 1) || (carryout !== 0)) begin 
     bitpassed = 0;
     $display("Test Case 2 Failed 1+0");
-    $display("%b SUM OUTPUT", sum);
   end
 
 
   // Test Case 3: 
-    control=3'b000;
-    a=0;
-    b=1;
-    carryin=0; // ADD
+  a=0;b=1;carryin=0;control[0]=0;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 1) || (carryout !== 0)) begin // need to add (zero !== 0) and overflow?
+  if(( sum !== 1) || (carryout !== 0)) begin
     bitpassed = 0;
     $display("Test Case 3 Failed 0+1");
-    $display("%b SUM OUTPUT", sum);
-  end
-
-
-  // Test Case 3: 
-    control=3'b000;
-    a=1;
-    b=1;
-    carryin=0; // ADD
-
-  if(( sum !== 0) || (carryout !== 1)) begin // need to add (zero !== 0) and overflow?
-    bitpassed = 0;
-    $display("Test Case 4 Failed 1+1");
-    $display("%b SUM OUTPUT", sum);
   end
 
 
   // Test Case 4: 
-    control=3'b000;
-    a=0;
-    b=1;
-    carryin=1; // ADD
+  a=1;b=1;carryin=0;control[0]=0;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 0) || (carryout !== 1)) begin // need to add (zero !== 0) and overflow?
+  if(( sum !== 0) || (carryout !== 1)) begin
     bitpassed = 0;
-    $display("Test Case 5 Failed 1+0 + CI");
-    $display("%b SUM OUTPUT", sum);
+    $display("Test Case 4 Failed 1+1");
   end
 
-////////////////////////////// SUB TESTS //////////////////////////////////////////////////////
-    
-    $display("///////////// SUB TESTS /////////////////////////");
+
+  // Test Case 5: 
+  a=1;b=0;carryin=1;control[0]=0;control[1]=0;control[2]=0; #1000
+
+  if(( sum !== 0) || (carryout !== 1)) begin
+    bitpassed = 0;
+    $display("Test Case 5 Failed 1+0 + CI");
+  end
+
+  $display("///////////// SUB TESTS /////////////////////////");
 
 
   // Test Case 1: 
-    control=3'b001;
-    a=0;
-    b=0;
-    carryin=0;
+  a=0;b=0;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 0) || (carryout !== 0)) begin // need to add (zero !== 0) and overflow?
+  if(( sum !== 0) || (carryout !== 0)) begin
     bitpassed = 0;
     $display("Test Case 1 Failed 0-0");
-    $display("%b SUM OUTPUT", sum);
   end
 
 
 
   // Test Case 2: 
-    control=3'b001;
-    a=1;
-    b=0;
-    carryin=0;
+  a=1;b=0;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 1) || (carryout !== 0)) begin // need to add (zero !== 0) and overflow?
+  if(( sum !== 1) || (carryout !== 0)) begin
     bitpassed = 0;
     $display("Test Case 2 Failed 1-0");
-    $display("%b SUM OUTPUT", sum);
   end
 
 
   // Test Case 3: 
-    control=3'b001;
-    a=0;
-    b=1;
-    carryin=0; 
+  a=0;b=1;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 0) || (carryout !== 1)) begin // need to add (zero !== 0) and overflow?
+  if(( sum !== 0) || (carryout !== 1)) begin
     bitpassed = 0;
     $display("Test Case 3 Failed 0-1");
-    $display("%b SUM OUTPUT", sum);
   end
 
 
-  // Test Case 3: 
-    control=3'b001;
-    a=1;
-    b=1;
-    carryin=0; // ADD
+  // Test Case 4: 
+  a=1;b=1;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 0) || (carryout !== 0)) begin // need to add (zero !== 0) and overflow?
+  if(( sum !== 0) || (carryout !== 0)) begin
     bitpassed = 0;
     $display("Test Case 4 Failed 1-1");
-    $display("%b SUM OUTPUT", sum);
   end
 
   ////////////////////////////// XOR TESTS //////////////////////////////////////////////////////
     
     $display("///////////// XOR TESTS /////////////////////////");
-
-    
-
-
-
 
   #5
   endtest = 1;

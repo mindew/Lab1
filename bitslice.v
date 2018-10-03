@@ -98,8 +98,9 @@ module structuralBitSlice
 // value for xor
  `XOR xorGate5(AxorB, a, b);
 
- structuralMultiplexer mymux(sum, address0, address1, sumval, noror, nandand, AxorB);
 
+
+ structuralMultiplexer mymux(sum, address0, address1, sumval, noror, nandand, AxorB);
 
 
 endmodule
