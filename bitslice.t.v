@@ -2,6 +2,30 @@
 `timescale 1 ns / 1 ps
 `include "bitslice.v"
 
+// module manualTestBitSlice();
+
+//   reg [3:0] control;
+//   reg a, b, carryin;
+//   wire [3:0] sum;
+//   wire carryout;
+
+//   structuralBitSlice bitslice(.sum(sum), .carryout(carryout), .control(control), .a(a), .b(b), .carryin(carryin));
+
+//   initial begin
+
+
+//   // Cases 1-4 Extremes
+//   a=1;b=0;carryin=0;control[0]=0;control[1]=0;control[2]=1; control[3]=0;#1000
+//   $display("%b | carryout | %b | sum ", carryout, sum );
+// $display("%b SUM OUTPUT", control);
+//   $display("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTt",);
+//   end
+
+
+
+
+//endmodule
+
 
 module testBitSlice();
     wire [2:0] control;
