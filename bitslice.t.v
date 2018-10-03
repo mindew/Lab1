@@ -3,7 +3,7 @@
 `include "bitslice.v"
 
 // For other tests such as XOR, AND, OR, NAND, NOR
-// do we need to include other modules? we don't use sum and carry in 
+// do we need to include other modules? we don't use sum and carry in
 
 // module manualTestBitSlice();
 
@@ -35,16 +35,16 @@ module testBitSlice();
     wire carryin;
     wire carryout;
     wire sum;
-    reg   begintest; 
-    wire    endtest;     
-    wire    bitpassed; 
+    reg   begintest;
+    wire    endtest;
+    wire    bitpassed;
 
     structuralBitSlice bitslice(.sum(sum), .carryout(carryout), .control(control), .a(a), .b(b), .carryin(carryin));
 
     testbenchBitSlice tester
-    ( 
+    (
       .begintest(begintest),
-      .endtest(endtest), 
+      .endtest(endtest),
       .bitpassed(bitpassed),
       .sum(sum),
       .carryout(carryout),
@@ -103,7 +103,7 @@ output reg carryin
 
  $display("///////////// ADD TESTS /////////////////////////");
 
-  // Test Case 1: 
+  // Test Case 1:
    a=0;b=0;carryin=0;control[0]=0;control[1]=0;control[2]=0; #1000
 
   if(( sum !== 0) || (carryout !== 0)) begin
@@ -111,16 +111,16 @@ output reg carryin
     $display("Test Case 1 Failed 0+0");
   end
 
-  // Test Case 2: 
+  // Test Case 2:
   a=1;b=0;carryin=0;control[0]=0;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 1) || (carryout !== 0)) begin 
+  if(( sum !== 1) || (carryout !== 0)) begin
     bitpassed = 0;
     $display("Test Case 2 Failed 1+0");
   end
 
 
-  // Test Case 3: 
+  // Test Case 3:
   a=0;b=1;carryin=0;control[0]=0;control[1]=0;control[2]=0; #1000
 
   if(( sum !== 1) || (carryout !== 0)) begin
@@ -129,7 +129,7 @@ output reg carryin
   end
 
 
-  // Test Case 4: 
+  // Test Case 4:
   a=1;b=1;carryin=0;control[0]=0;control[1]=0;control[2]=0; #1000
 
   if(( sum !== 0) || (carryout !== 1)) begin
@@ -138,7 +138,7 @@ output reg carryin
   end
 
 
-  // Test Case 5: 
+  // Test Case 5:
   a=1;b=0;carryin=1;control[0]=0;control[1]=0;control[2]=0; #1000
 
   if(( sum !== 0) || (carryout !== 1)) begin
@@ -149,17 +149,17 @@ output reg carryin
   $display("///////////// SUB TESTS /////////////////////////");
 
 
-  // Test Case 1: 
+  // Test Case 1:
   a=0;b=0;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
 
   if(( sum !== 0) || (carryout !== 0)) begin
     bitpassed = 0;
-    $display("Test Case 1 Failed 0-0");
+    $display("Test Case 1 Failed 0-0 %b  %b", sum, carryout);
   end
 
 
 
-  // Test Case 2: 
+  // Test Case 2:
   a=1;b=0;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
 
   if(( sum !== 1) || (carryout !== 0)) begin
@@ -168,7 +168,7 @@ output reg carryin
   end
 
 
-  // Test Case 3: 
+  // Test Case 3:
   a=0;b=1;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
 
   if(( sum !== 0) || (carryout !== 1)) begin
@@ -177,7 +177,7 @@ output reg carryin
   end
 
 
-  // Test Case 4: 
+  // Test Case 4:
   a=1;b=1;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
 
   if(( sum !== 0) || (carryout !== 0)) begin
@@ -186,15 +186,23 @@ output reg carryin
   end
 
   ////////////////////////////// XOR TESTS //////////////////////////////////////////////////////
-    
+
     $display("///////////// XOR TESTS /////////////////////////");
 
-  // Test Case 1: 
+  // Test Case 1:
   a=1;b=1;carryin=0;control[0]=0;control[1]=1;control[2]=1; #1000
 
-  if(( sum !== 0) || (carryout !== 0)) begin
+  if(( sum !== 0)) begin
     bitpassed = 0;
-    $display("Test Case 4 Failed 1-1");
+    $display("Test Case 1 Failed xor 1,1");
+  end
+
+  // Test Case 2:
+  a=1;b=0;carryin=0;control[0]=1;control[1]=1;control[2]=0; #1000
+
+  if(( sum !== 1)) begin
+    bitpassed = 0;
+    $display("Test Case 2 Failed xor 1,0");
   end
 
   #5
