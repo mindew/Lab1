@@ -1,7 +1,9 @@
-`define AND and #50
-`define OR or #50
-`define NOT not #50
-`define XOR xor #50
+`define AND and #20
+`define OR or #20
+`define NOT not #10
+`define XOR xor #20
+`define AND3 and #30
+`define OR4 or #40
 
 `define ADD_ALU  3'd0
 `define SUB_ALU  3'd1
@@ -56,7 +58,7 @@ module structuralMultiplexer
     `AND and6(in1and, in1, A0andnotA1);
     `AND and7(in2and, in2, notA0andA1);
     `AND and8(in3and, in3, A0andA1);
-    `OR or1(out, in0and, in1and, in2and, in3and);
+    `OR4 or1(out, in0and, in1and, in2and, in3and);
 
 endmodule
 
@@ -78,7 +80,7 @@ module structuralBitSlice
  // values for sum, subtract, and slt
  `NOT notGate(notControl1, control[1]);
  `NOT notGate2(notControl2, control[2]);
- `AND andGate(subtract, control[0], notControl1, notControl2);
+ `AND3 andGate(subtract, control[0], notControl1, notControl2);
  `XOR xorGate(newB, subtract, b);
  `XOR xorGate1(AxorB2, a, newB);
  `XOR xorGate2(sumval, AxorB2, carryin);
