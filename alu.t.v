@@ -30,7 +30,7 @@ module testALU();
         #1000;
     end
 
-    always @(posedge endtest) begin
+    always @(endtest) begin
         $display("ALU passed?: %b", alupassed);
     end
 
@@ -78,7 +78,7 @@ input[2:0]    command
     #10
 
   // Test Case 1: 
-    operandA=32'd4;
+    operandA=32'd04;
     operandB=32'd02;
     command=3'd0; // TODO: PUT COMMMAND HERE FOR ADDING
 
