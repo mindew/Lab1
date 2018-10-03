@@ -209,6 +209,7 @@ output reg carryin
     
     $display("///////////// XOR TESTS /////////////////////////");
 
+    
 
 
 
