@@ -4,23 +4,32 @@
 
 
 module testALU();
-    reg [31:0] operandA;
-    reg [31:0] operandB;
-    reg [2:0] command;
+    wire [31:0] operandA;
+    wire [31:0] operandB;
+    wire [2:0] command;
     wire [31:0] result;
     wire carryout;
     wire zero;
     wire overflow;
+    reg   begintest; 
+    wire    endtest;     
+    wire    alupassed; 
 
     ALU alu(.result(result), .carryout(carryout), .overflow(overflow), .operandA(operandA), .operandB(operandB), .command(command));
 
-    initial begin
+    lab1testbench tester
+    ( 
+        .begintest(begintest),
+        .endtest(endtest),
+        .alupassed(alupassed),
+        .result(result),
+        .carryout(carryout),
+        .overflow(overflow),
+        .operandA(operandA),
+        .operandB(operandB),
+        .command(command)
 
-    $dumpfile("alu.vcd");
-    $dumpvars();
-
-
-    lab1testbench tester( .begintest(begintest), .endtest(endtest), .alupassed(alupassed), .result(result), .carryout(carryout), .overflow(overflow), .operandA(operandA), .operandB(operandB), .command(command));
+    );
 
 
     initial begin
@@ -29,14 +38,12 @@ module testALU();
         begintest=1;
         #1000;
     end
+    
 
     always @(endtest) begin
         $display("ALU passed?: %b", alupassed);
     end
 
-    $finish();
-
-    end
 
 endmodule
 
@@ -76,6 +83,7 @@ input[2:0]    command
     endtest = 0;
     alupassed = 1;
     #10
+  
 
   // Test Case 1: 
     operandA=32'd04;
@@ -97,9 +105,9 @@ input[2:0]    command
     $display("Test Case 2 Failed");
   end
 
+
   #5
   endtest = 1;
-
-end
+  end
 
 endmodule
