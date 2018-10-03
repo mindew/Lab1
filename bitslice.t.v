@@ -4,12 +4,14 @@
 
 
 module testBitSlice();
-    reg [2:0] ALUcommand;
-    wire address0;
-    wire address1;
-    wire invert;
+    reg [2:0] control;
+    reg a;
+    reg b;
+    reg carryin;
+    wire carryout;
+    wire sum;
 
-    BitSlice bitslice(.address0(address1), .address1(address1), .invert(), .ALUcommand(ALUcommand));
+    BitSlice structuralBitSlice(.sum(sum), .carryout(carryout), .invert(invert), .control(control), .a(a), .b(b), .carryin(carryin));
 
     initial begin
 
@@ -17,7 +19,7 @@ module testBitSlice();
     $dumpvars();
 
 
-    lab1testbench tester( .begintest(begintest), .endtest(endtest), .alupassed(alupassed), .address0(address1), .address1(address1), .invert(), .ALUcommand(ALUcommand));
+    lab1testbenchbitslice tester( .begintest(begintest), .endtest(endtest), .bitpassed(bitpassed), .sum(sum), .carryout(carryout), .invert(invert), .control(control), .a(a), .b(b), .carryin(carryin));
 
 
     initial begin
@@ -28,7 +30,7 @@ module testBitSlice();
     end
 
     always @(endtest) begin
-        $display("ALU passed?: %b", alupassed);
+        $display("Bit Sliced passed?: %b", bitpassed);
     end
 
     $finish();
@@ -44,54 +46,52 @@ module lab1testbenchbitslice
 // Test bench driver signal connections
 input           begintest,  // Triggers start of testing
 output reg      endtest,    // Raise once test completes
-output reg      alupassed,  // Signal test result
+output reg      bitpassed,  // Signal test result
 
-// Register File ALU connections
-output[31:0]  result,
-output        carryout,
-output        zero,
-output        overflow,
-input[31:0]   operandA,
-input[31:0]   operandB,
-input[2:0]    command
+output sum,
+output carryout,
+input[2:0]  control,
+input a,
+input b,
+input carryin
+
+
 );
 
-
-// THE INPUT AND OUTPUTS ARE BACKWARDS IN THE TEST
-
-
-// Left to do
   // Initialize register driver signals
   initial begin // all the inpupts
-    operandA=32'd0;
-    operandB=32'd0;
-    command=3'd0;
+    control=3'b0;
+    a=0;
+    b=0;
+    carryin=0;
   end
 
   // Once 'begintest' is asserted, start running test cases
   always @(begintest) begin // always @(posedge begintest) begin
     endtest = 0;
-    alupassed = 1;
+    bitpassed = 1;
     #10
 
   // Test Case 1: 
-    operandA=32'd04;
-    operandB=32'd02;
-    command=3'd0; // TODO: PUT COMMMAND HERE FOR ADDING
+    control=3'b1
+    a=0;
+    b=0;
+    carryin=0; // ADD
 
-  if(( result !== 6) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin // inputs????
-    alupassed = 0;
-    $display("Test Case 1 Failed 4+2");
+  if(( sum !== 0) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 1 Failed 0+0");
   end
 
   // Test Case 2: 
-    operandA=32'b0101;
-    operandB=32'b0011;
-    command=3'd0; // TODO: PUT COMMMAND HERE FOR SLT
+    control=3'b1
+    a=1;
+    b=0;
+    carryin=0; // ADD
 
-  if(( result !== 001) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin // WHAT FORMAT SHOULD THESE BE IN??
-    dutpassed = 0;
-    $display("Test Case 2 Failed");
+  if(( sum !== 1) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 2 Failed 1+0");
   end
 
   #5
