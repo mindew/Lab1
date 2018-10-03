@@ -9,15 +9,15 @@ module testBitSlice();
     wire address1;
     wire invert;
 
-    BitSlice bitslice(.result(result), .carryout(carryout), .overflow(overflow), .operandA(operandA), .operandB(operandB), .command(command));
+    BitSlice bitslice(.address0(address1), .address1(address1), .invert(), .ALUcommand(ALUcommand));
 
     initial begin
 
-    $dumpfile("alu.vcd");
+    $dumpfile("bitslice.vcd");
     $dumpvars();
 
 
-    lab1testbench tester( .begintest(begintest), .endtest(endtest), .alupassed(alupassed), .result(result), .carryout(carryout), .overflow(overflow), .operandA(operandA), .operandB(operandB), .command(command));
+    lab1testbench tester( .begintest(begintest), .endtest(endtest), .alupassed(alupassed), .address0(address1), .address1(address1), .invert(), .ALUcommand(ALUcommand));
 
 
     initial begin
@@ -39,7 +39,7 @@ endmodule
 
 
 
-module lab1testbench
+module lab1testbenchbitslice
 (
 // Test bench driver signal connections
 input           begintest,  // Triggers start of testing
