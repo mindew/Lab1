@@ -2,40 +2,6 @@
 `timescale 1 ns / 1 ps
 `include "alu.v"
 
-// potential issues: type mismatch --> backward declaration?
-// command A & B are initially declared as decimal.... --> they're being called as binary later
-// operations such as SLT should return only one bit
-
-// module manualTestALUSlice();
-
-//   wire[31:0]  result;
-//   wire        carryout, zero, overflow;
-//   reg[31:0]   operandA, operandB;
-//   reg[2:0]    command;
-
-
-//   // Instantiate ALU register file
-//   ALU alu(
-//     .result(result),
-//     .carryout(carryout),
-//     .overflow(overflow),
-//     .operandA(operandA),
-//     .operandB(operandB),
-//     .command(command)
-//     );
-
-//   //Test harness asserts 'begintest' for 1000 times steps, starting at time 10
-//   initial begin
-//     operandA=32'd0;
-//     operandB=32'd0;
-//     command=3'b0; // TODO: PUT COMMMAND HERE FOR ADDING
-//     #1000
-//     $display("%b | result | ", result);
-//     //$display("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",);
-//   end
-
-// endmodule
-
 
 module testALU();
     wire [31:0] operandA;     // first bitstream
@@ -113,10 +79,6 @@ output reg[2:0]    command
 );
 
 
-// THE INPUT AND OUTPUTS ARE BACKWARDS IN THE TEST
-
-
-// Left to do
   // Initialize register driver signals
   initial begin // all the inpupts
     operandA=32'd0;
