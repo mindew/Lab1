@@ -2,32 +2,6 @@
 `timescale 1 ns / 1 ps
 `include "bitslice.v"
 
-// For other tests such as XOR, AND, OR, NAND, NOR
-// do we need to include other modules? we don't use sum and carry in
-
-// module manualTestBitSlice();
-
-//   reg [3:0] control;
-//   reg a, b, carryin;
-//   wire [3:0] sum;
-//   wire carryout;
-
-//   structuralBitSlice bitslice(.sum(sum), .carryout(carryout), .control(control), .a(a), .b(b), .carryin(carryin));
-
-//   initial begin
-
-
-//   // Cases 1-4 Extremes
-//   a=1;b=0;carryin=0;control[0]=0;control[1]=0;control[2]=1; control[3]=0;#1000
-//   $display("%b | carryout | %b | sum ", carryout, sum );
-//   $display("%b SUM OUTPUT", control);
-//   $display("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTt",);
-//   end
-
-
-// endmodule
-
-
 module testBitSlice();
     wire [2:0] control;
     wire a;
@@ -88,7 +62,7 @@ output reg carryin
 );
 
   // Initialize register driver signals
-  initial begin // all the inputs
+  initial begin
     control=3'b000;
     a=0;
     b=0;
@@ -96,10 +70,12 @@ output reg carryin
   end
 
   // Once 'begintest' is asserted, start running test cases
-  initial @(begintest) begin // always @(posedge begintest) begin
+  initial @(begintest) begin 
     endtest = 0;
     bitpassed = 1;
     #50
+
+    // Beginning tests of ADD, SUB, XOR, AND, NAND, OR, NOR
 
  $display("///////////// ADD TESTS /////////////////////////");
 
@@ -158,13 +134,12 @@ output reg carryin
   end
 
 
-
   // Test Case 2:
   a=1;b=0;carryin=0;control[0]=1;control[1]=0;control[2]=0; #1000
 
   if(( sum !== 0) || (carryout !== 1)) begin
     bitpassed = 0;
-    $display("Test Case 2 Failed 1-0");
+    $display("Test Case 2 Failed 1-0 %b  %b", sum, carryout);
   end
 
 
@@ -185,7 +160,22 @@ output reg carryin
     $display("Test Case 4 Failed 1-1");
   end
 
-  ////////////////////////////// XOR TESTS //////////////////////////////////////////////////////
+  // Test Case 5:
+  a=0;b=0;carryin=0;control[0]=1;control[1]=0;control[2]=0; #1000
+
+  if(( sum !== 1) || (carryout !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 5 Failed 0-0 CN = 0 %b  %b", sum, carryout);
+  end
+
+
+  // Test Case 6:
+  a=1;b=0;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
+
+  if(( sum !== 1) || (carryout !== 1)) begin
+    bitpassed = 0;
+    $display("Test Case 6 Failed 1-0 CN=1 %b  %b", sum, carryout);
+  end
 
     $display("///////////// XOR TESTS /////////////////////////");
 
@@ -204,6 +194,129 @@ output reg carryin
     bitpassed = 0;
     $display("Test Case 2 Failed xor 1,0");
   end
+
+  // Test Case 3:
+  a=0;b=0;carryin=0;control[0]=0;control[1]=1;control[2]=0; #1000
+
+  if(( sum !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 2 Failed xor 0,0");
+  end
+
+
+  $display("///////////// AND TESTS /////////////////////////");
+
+
+
+  a=1;b=1;carryin=0;control[0]=0;control[1]=0;control[2]=1; #1000
+
+  if(( sum !== 1)) begin
+    bitpassed = 0;
+    $display("Test Case 1 Failed and 1,1");
+  end
+
+  // Test Case 2:
+  a=1;b=0;carryin=0;control[0]=0;control[1]=0;control[2]=1; #1000
+
+  if(( sum !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 2 Failed and 1,0");
+  end
+
+  // Test Case 3:
+  a=0;b=0;carryin=0;control[0]=0;control[1]=0;control[2]=1; #1000
+
+  if(( sum !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 3 Failed and 0,0");
+  end
+
+
+
+  $display("///////////// NAND TESTS /////////////////////////");
+
+
+
+  a=1;b=1;carryin=0;control[0]=1;control[1]=0;control[2]=1; #1000
+
+  if(( sum !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 1 Failed nand 1,1");
+  end
+
+  // Test Case 2:
+  a=1;b=0;carryin=0;control[0]=1;control[1]=0;control[2]=1; #1000
+
+  if(( sum !== 1)) begin
+    bitpassed = 0;
+    $display("Test Case 2 Failed nand 1,0");
+  end
+
+  // Test Case 3:
+  a=0;b=0;carryin=0;control[0]=1;control[1]=0;control[2]=1; #1000
+
+  if(( sum !== 1)) begin
+    bitpassed = 0;
+    $display("Test Case 3 Failed nand 0,0");
+  end
+
+
+
+  $display("///////////// OR TESTS /////////////////////////");
+
+
+
+  a=1;b=1;carryin=0;control[0]=1;control[1]=1;control[2]=1; #1000
+
+  if(( sum !== 1)) begin
+    bitpassed = 0;
+    $display("Test Case 1 Failed or 1,1");
+  end
+
+  // Test Case 2:
+  a=1;b=0;carryin=0;control[0]=1;control[1]=1;control[2]=1; #1000
+
+  if(( sum !== 1)) begin
+    bitpassed = 0;
+    $display("Test Case 2 Failed or 1,0");
+  end
+
+  // Test Case 3:
+  a=0;b=0;carryin=0;control[0]=1;control[1]=1;control[2]=1; #1000
+
+  if(( sum !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 3 Failed or 0,0");
+  end
+
+
+  $display("///////////// NOR TESTS /////////////////////////");
+
+
+  a=1;b=1;carryin=0;control[0]=0;control[1]=1;control[2]=1; #1000
+
+  if(( sum !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 1 Failed or 1,1");
+  end
+
+  // Test Case 2:
+  a=1;b=0;carryin=0;control[0]=0;control[1]=1;control[2]=1; #1000
+
+  if(( sum !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 2 Failed or 1,0");
+  end
+
+  // Test Case 3:
+  a=0;b=0;carryin=0;control[0]=0;control[1]=1;control[2]=1; #1000
+
+  if(( sum !== 1)) begin
+    bitpassed = 0;
+    $display("Test Case 3 Failed or 0,0");
+  end
+
+
 
   #5
   endtest = 1;

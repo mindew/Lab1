@@ -6,19 +6,19 @@
 :vpi_module "vhdl_sys";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0x1fe8100 .scope module, "testBitSlice" "testBitSlice" 2 28;
+S_0xea0100 .scope module, "testBitSlice" "testBitSlice" 2 31;
  .timescale -9 -12;
-v0x202a070_0 .net "a", 0 0, v0x2029770_0;  1 drivers
-v0x202a130_0 .net "b", 0 0, v0x2029860_0;  1 drivers
-v0x202a240_0 .var "begintest", 0 0;
-v0x202a2e0_0 .net "bitpassed", 0 0, v0x2029a00_0;  1 drivers
-v0x202a380_0 .net "carryin", 0 0, v0x2029aa0_0;  1 drivers
-v0x202a4c0_0 .net "carryout", 0 0, L_0x202b760;  1 drivers
-v0x202a5b0_0 .net "control", 2 0, v0x2029c60_0;  1 drivers
-v0x202a650_0 .net "endtest", 0 0, v0x2029d50_0;  1 drivers
-v0x202a6f0_0 .net "sum", 0 0, L_0x202cca0;  1 drivers
-E_0x1ff25b0 .event edge, v0x2029d50_0;
-S_0x1fe8280 .scope module, "bitslice" "structuralBitSlice" 2 39, 3 65 0, S_0x1fe8100;
+v0xeecb50_0 .net "a", 0 0, v0xeec250_0;  1 drivers
+v0xeecc10_0 .net "b", 0 0, v0xeec340_0;  1 drivers
+v0xeecd20_0 .var "begintest", 0 0;
+v0xeecdc0_0 .net "bitpassed", 0 0, v0xeec4e0_0;  1 drivers
+v0xeece60_0 .net "carryin", 0 0, v0xeec580_0;  1 drivers
+v0xeecfa0_0 .net "carryout", 0 0, L_0xeee240;  1 drivers
+v0xeed090_0 .net "control", 2 0, v0xeec740_0;  1 drivers
+v0xeed130_0 .net "endtest", 0 0, v0xeec830_0;  1 drivers
+v0xeed1d0_0 .net "sum", 0 0, L_0xeef730;  1 drivers
+E_0xeaa5b0 .event edge, v0xeec830_0;
+S_0xea0280 .scope module, "bitslice" "structuralBitSlice" 2 42, 3 66 0, S_0xea0100;
  .timescale -9 -12;
     .port_info 0 /OUTPUT 1 "sum"
     .port_info 1 /OUTPUT 1 "carryout"
@@ -26,71 +26,71 @@ S_0x1fe8280 .scope module, "bitslice" "structuralBitSlice" 2 39, 3 65 0, S_0x1fe
     .port_info 3 /INPUT 1 "a"
     .port_info 4 /INPUT 1 "b"
     .port_info 5 /INPUT 1 "carryin"
-L_0x202a820/d .functor NOT 1, L_0x202a890, C4<0>, C4<0>, C4<0>;
-L_0x202a820 .delay 1 (10000,10000,10000) L_0x202a820/d;
-L_0x202aa80/d .functor NOT 1, L_0x202aaf0, C4<0>, C4<0>, C4<0>;
-L_0x202aa80 .delay 1 (10000,10000,10000) L_0x202aa80/d;
-L_0x202ac50/d .functor AND 1, L_0x202ae10, L_0x202a820, L_0x202aa80, C4<1>;
-L_0x202ac50 .delay 1 (30000,30000,30000) L_0x202ac50/d;
-L_0x202af70/d .functor XOR 1, L_0x202ac50, v0x2029860_0, C4<0>, C4<0>;
-L_0x202af70 .delay 1 (20000,20000,20000) L_0x202af70/d;
-L_0x202b080/d .functor XOR 1, v0x2029770_0, L_0x202af70, C4<0>, C4<0>;
-L_0x202b080 .delay 1 (20000,20000,20000) L_0x202b080/d;
-L_0x202b1e0/d .functor XOR 1, L_0x202b080, v0x2029aa0_0, C4<0>, C4<0>;
-L_0x202b1e0 .delay 1 (20000,20000,20000) L_0x202b1e0/d;
-L_0x202b3d0/d .functor AND 1, v0x2029770_0, v0x2029860_0, C4<1>, C4<1>;
-L_0x202b3d0 .delay 1 (20000,20000,20000) L_0x202b3d0/d;
-L_0x202b610/d .functor AND 1, v0x2029aa0_0, L_0x202b080, C4<1>, C4<1>;
-L_0x202b610 .delay 1 (20000,20000,20000) L_0x202b610/d;
-L_0x202b760/d .functor OR 1, L_0x202b3d0, L_0x202b610, C4<0>, C4<0>;
-L_0x202b760 .delay 1 (20000,20000,20000) L_0x202b760/d;
-L_0x202b8c0/d .functor OR 1, v0x2029770_0, v0x2029860_0, C4<0>, C4<0>;
-L_0x202b8c0 .delay 1 (20000,20000,20000) L_0x202b8c0/d;
-L_0x202ba80/d .functor XOR 1, v0x2026d70_0, L_0x202b8c0, C4<0>, C4<0>;
-L_0x202ba80 .delay 1 (20000,20000,20000) L_0x202ba80/d;
-L_0x202bbe0/d .functor XOR 1, v0x2026d70_0, L_0x202b3d0, C4<0>, C4<0>;
-L_0x202bbe0 .delay 1 (20000,20000,20000) L_0x202bbe0/d;
-L_0x202bdb0/d .functor XOR 1, v0x2029770_0, v0x2029860_0, C4<0>, C4<0>;
-L_0x202bdb0 .delay 1 (20000,20000,20000) L_0x202bdb0/d;
-v0x20280d0_0 .net "AB", 0 0, L_0x202b3d0;  1 drivers
-v0x20281b0_0 .net "AorB", 0 0, L_0x202b8c0;  1 drivers
-v0x2028270_0 .net "AxorB", 0 0, L_0x202bdb0;  1 drivers
-v0x2028340_0 .net "AxorB2", 0 0, L_0x202b080;  1 drivers
-v0x20283e0_0 .net "AxorBC", 0 0, L_0x202b610;  1 drivers
-v0x2028480_0 .net *"_s1", 0 0, L_0x202a890;  1 drivers
-v0x2028560_0 .net *"_s3", 0 0, L_0x202aaf0;  1 drivers
-v0x2028640_0 .net *"_s5", 0 0, L_0x202ae10;  1 drivers
-v0x2028720_0 .net "a", 0 0, v0x2029770_0;  alias, 1 drivers
-v0x2028870_0 .net "address0", 0 0, v0x2026be0_0;  1 drivers
-v0x2028910_0 .net "address1", 0 0, v0x2026ca0_0;  1 drivers
-v0x2028a00_0 .net "b", 0 0, v0x2029860_0;  alias, 1 drivers
-v0x2028ac0_0 .net "carryin", 0 0, v0x2029aa0_0;  alias, 1 drivers
-v0x2028b80_0 .net "carryout", 0 0, L_0x202b760;  alias, 1 drivers
-v0x2028c40_0 .net "control", 2 0, v0x2029c60_0;  alias, 1 drivers
-v0x2028d00_0 .net "invert", 0 0, v0x2026d70_0;  1 drivers
-v0x2028da0_0 .net "nandand", 0 0, L_0x202bbe0;  1 drivers
-v0x2028f50_0 .net "newB", 0 0, L_0x202af70;  1 drivers
-v0x2028ff0_0 .net "noror", 0 0, L_0x202ba80;  1 drivers
-v0x2029090_0 .net "notControl1", 0 0, L_0x202a820;  1 drivers
-v0x2029130_0 .net "notControl2", 0 0, L_0x202aa80;  1 drivers
-v0x20291d0_0 .net "subtract", 0 0, L_0x202ac50;  1 drivers
-v0x2029270_0 .net "sum", 0 0, L_0x202cca0;  alias, 1 drivers
-v0x2029310_0 .net "sumval", 0 0, L_0x202b1e0;  1 drivers
-L_0x202a890 .part v0x2029c60_0, 1, 1;
-L_0x202aaf0 .part v0x2029c60_0, 2, 1;
-L_0x202ae10 .part v0x2029c60_0, 0, 1;
-S_0x1fe3a10 .scope module, "mylut" "ALUcontrolLUT" 3 78, 3 18 0, S_0x1fe8280;
+L_0xeed300/d .functor NOT 1, L_0xeed370, C4<0>, C4<0>, C4<0>;
+L_0xeed300 .delay 1 (10000,10000,10000) L_0xeed300/d;
+L_0xeed560/d .functor NOT 1, L_0xeed5d0, C4<0>, C4<0>, C4<0>;
+L_0xeed560 .delay 1 (10000,10000,10000) L_0xeed560/d;
+L_0xeed730/d .functor AND 1, L_0xeed8f0, L_0xeed300, L_0xeed560, C4<1>;
+L_0xeed730 .delay 1 (30000,30000,30000) L_0xeed730/d;
+L_0xeeda50/d .functor XOR 1, L_0xeed730, v0xeec340_0, C4<0>, C4<0>;
+L_0xeeda50 .delay 1 (20000,20000,20000) L_0xeeda50/d;
+L_0xeedb60/d .functor XOR 1, v0xeec250_0, L_0xeeda50, C4<0>, C4<0>;
+L_0xeedb60 .delay 1 (20000,20000,20000) L_0xeedb60/d;
+L_0xeedcc0/d .functor XOR 1, L_0xeedb60, v0xeec580_0, C4<0>, C4<0>;
+L_0xeedcc0 .delay 1 (20000,20000,20000) L_0xeedcc0/d;
+L_0xeedeb0/d .functor AND 1, v0xeec250_0, v0xeec340_0, C4<1>, C4<1>;
+L_0xeedeb0 .delay 1 (20000,20000,20000) L_0xeedeb0/d;
+L_0xeee0f0/d .functor AND 1, v0xeec580_0, L_0xeedb60, C4<1>, C4<1>;
+L_0xeee0f0 .delay 1 (20000,20000,20000) L_0xeee0f0/d;
+L_0xeee240/d .functor OR 1, L_0xeedeb0, L_0xeee0f0, C4<0>, C4<0>;
+L_0xeee240 .delay 1 (20000,20000,20000) L_0xeee240/d;
+L_0xeee3a0/d .functor OR 1, v0xeec250_0, v0xeec340_0, C4<0>, C4<0>;
+L_0xeee3a0 .delay 1 (20000,20000,20000) L_0xeee3a0/d;
+L_0xeee500/d .functor XOR 1, v0xee9850_0, L_0xeee3a0, C4<0>, C4<0>;
+L_0xeee500 .delay 1 (20000,20000,20000) L_0xeee500/d;
+L_0xeee660/d .functor XOR 1, v0xee9850_0, L_0xeedeb0, C4<0>, C4<0>;
+L_0xeee660 .delay 1 (20000,20000,20000) L_0xeee660/d;
+L_0xeee830/d .functor XOR 1, v0xeec250_0, v0xeec340_0, C4<0>, C4<0>;
+L_0xeee830 .delay 1 (20000,20000,20000) L_0xeee830/d;
+v0xeeabb0_0 .net "AB", 0 0, L_0xeedeb0;  1 drivers
+v0xeeac90_0 .net "AorB", 0 0, L_0xeee3a0;  1 drivers
+v0xeead50_0 .net "AxorB", 0 0, L_0xeee830;  1 drivers
+v0xeeae20_0 .net "AxorB2", 0 0, L_0xeedb60;  1 drivers
+v0xeeaec0_0 .net "AxorBC", 0 0, L_0xeee0f0;  1 drivers
+v0xeeaf60_0 .net *"_s1", 0 0, L_0xeed370;  1 drivers
+v0xeeb040_0 .net *"_s3", 0 0, L_0xeed5d0;  1 drivers
+v0xeeb120_0 .net *"_s5", 0 0, L_0xeed8f0;  1 drivers
+v0xeeb200_0 .net "a", 0 0, v0xeec250_0;  alias, 1 drivers
+v0xeeb350_0 .net "address0", 0 0, v0xee96c0_0;  1 drivers
+v0xeeb3f0_0 .net "address1", 0 0, v0xee9780_0;  1 drivers
+v0xeeb4e0_0 .net "b", 0 0, v0xeec340_0;  alias, 1 drivers
+v0xeeb5a0_0 .net "carryin", 0 0, v0xeec580_0;  alias, 1 drivers
+v0xeeb660_0 .net "carryout", 0 0, L_0xeee240;  alias, 1 drivers
+v0xeeb720_0 .net "control", 2 0, v0xeec740_0;  alias, 1 drivers
+v0xeeb7e0_0 .net "invert", 0 0, v0xee9850_0;  1 drivers
+v0xeeb880_0 .net "nandand", 0 0, L_0xeee660;  1 drivers
+v0xeeba30_0 .net "newB", 0 0, L_0xeeda50;  1 drivers
+v0xeebad0_0 .net "noror", 0 0, L_0xeee500;  1 drivers
+v0xeebb70_0 .net "notControl1", 0 0, L_0xeed300;  1 drivers
+v0xeebc10_0 .net "notControl2", 0 0, L_0xeed560;  1 drivers
+v0xeebcb0_0 .net "subtract", 0 0, L_0xeed730;  1 drivers
+v0xeebd50_0 .net "sum", 0 0, L_0xeef730;  alias, 1 drivers
+v0xeebdf0_0 .net "sumval", 0 0, L_0xeedcc0;  1 drivers
+L_0xeed370 .part v0xeec740_0, 1, 1;
+L_0xeed5d0 .part v0xeec740_0, 2, 1;
+L_0xeed8f0 .part v0xeec740_0, 0, 1;
+S_0xe9ba10 .scope module, "mylut" "ALUcontrolLUT" 3 79, 3 18 0, S_0xea0280;
  .timescale -9 -12;
     .port_info 0 /OUTPUT 1 "address0"
     .port_info 1 /OUTPUT 1 "address1"
     .port_info 2 /OUTPUT 1 "invert"
     .port_info 3 /INPUT 3 "ALUcommand"
-v0x1fe3c50_0 .net "ALUcommand", 2 0, v0x2029c60_0;  alias, 1 drivers
-v0x2026be0_0 .var "address0", 0 0;
-v0x2026ca0_0 .var "address1", 0 0;
-v0x2026d70_0 .var "invert", 0 0;
-E_0x1ff18b0 .event edge, v0x1fe3c50_0;
-S_0x2026ee0 .scope module, "mymux" "structuralMultiplexer" 3 103, 3 41 0, S_0x1fe8280;
+v0xe9bc50_0 .net "ALUcommand", 2 0, v0xeec740_0;  alias, 1 drivers
+v0xee96c0_0 .var "address0", 0 0;
+v0xee9780_0 .var "address1", 0 0;
+v0xee9850_0 .var "invert", 0 0;
+E_0xea98b0 .event edge, v0xe9bc50_0;
+S_0xee99c0 .scope module, "mymux" "structuralMultiplexer" 3 104, 3 42 0, S_0xea0280;
  .timescale -9 -12;
     .port_info 0 /OUTPUT 1 "out"
     .port_info 1 /INPUT 1 "addr0"
@@ -99,46 +99,46 @@ S_0x2026ee0 .scope module, "mymux" "structuralMultiplexer" 3 103, 3 41 0, S_0x1f
     .port_info 4 /INPUT 1 "in1"
     .port_info 5 /INPUT 1 "in2"
     .port_info 6 /INPUT 1 "in3"
-L_0x202bf40/d .functor NOT 1, v0x2026be0_0, C4<0>, C4<0>, C4<0>;
-L_0x202bf40 .delay 1 (10000,10000,10000) L_0x202bf40/d;
-L_0x202c0a0/d .functor NOT 1, v0x2026ca0_0, C4<0>, C4<0>, C4<0>;
-L_0x202c0a0 .delay 1 (10000,10000,10000) L_0x202c0a0/d;
-L_0x202c160/d .functor AND 1, v0x2026be0_0, v0x2026ca0_0, C4<1>, C4<1>;
-L_0x202c160 .delay 1 (20000,20000,20000) L_0x202c160/d;
-L_0x202c350/d .functor AND 1, v0x2026be0_0, L_0x202c0a0, C4<1>, C4<1>;
-L_0x202c350 .delay 1 (20000,20000,20000) L_0x202c350/d;
-L_0x202c460/d .functor AND 1, L_0x202bf40, v0x2026ca0_0, C4<1>, C4<1>;
-L_0x202c460 .delay 1 (20000,20000,20000) L_0x202c460/d;
-L_0x202c5c0/d .functor AND 1, L_0x202bf40, L_0x202c0a0, C4<1>, C4<1>;
-L_0x202c5c0 .delay 1 (20000,20000,20000) L_0x202c5c0/d;
-L_0x202c720/d .functor AND 1, L_0x202b1e0, L_0x202c5c0, C4<1>, C4<1>;
-L_0x202c720 .delay 1 (20000,20000,20000) L_0x202c720/d;
-L_0x202c830/d .functor AND 1, L_0x202ba80, L_0x202c350, C4<1>, C4<1>;
-L_0x202c830 .delay 1 (20000,20000,20000) L_0x202c830/d;
-L_0x202c9e0/d .functor AND 1, L_0x202bbe0, L_0x202c460, C4<1>, C4<1>;
-L_0x202c9e0 .delay 1 (20000,20000,20000) L_0x202c9e0/d;
-L_0x202cb40/d .functor AND 1, L_0x202bdb0, L_0x202c160, C4<1>, C4<1>;
-L_0x202cb40 .delay 1 (20000,20000,20000) L_0x202cb40/d;
-L_0x202cca0/d .functor OR 1, L_0x202c720, L_0x202c830, L_0x202c9e0, L_0x202cb40;
-L_0x202cca0 .delay 1 (40000,40000,40000) L_0x202cca0/d;
-v0x20271c0_0 .net "A0andA1", 0 0, L_0x202c160;  1 drivers
-v0x2027280_0 .net "A0andnotA1", 0 0, L_0x202c350;  1 drivers
-v0x2027340_0 .net "addr0", 0 0, v0x2026be0_0;  alias, 1 drivers
-v0x2027410_0 .net "addr1", 0 0, v0x2026ca0_0;  alias, 1 drivers
-v0x20274e0_0 .net "in0", 0 0, L_0x202b1e0;  alias, 1 drivers
-v0x20275d0_0 .net "in0and", 0 0, L_0x202c720;  1 drivers
-v0x2027670_0 .net "in1", 0 0, L_0x202ba80;  alias, 1 drivers
-v0x2027710_0 .net "in1and", 0 0, L_0x202c830;  1 drivers
-v0x20277d0_0 .net "in2", 0 0, L_0x202bbe0;  alias, 1 drivers
-v0x2027920_0 .net "in2and", 0 0, L_0x202c9e0;  1 drivers
-v0x20279e0_0 .net "in3", 0 0, L_0x202bdb0;  alias, 1 drivers
-v0x2027aa0_0 .net "in3and", 0 0, L_0x202cb40;  1 drivers
-v0x2027b60_0 .net "notA0", 0 0, L_0x202bf40;  1 drivers
-v0x2027c20_0 .net "notA0andA1", 0 0, L_0x202c460;  1 drivers
-v0x2027ce0_0 .net "notA0andnotA1", 0 0, L_0x202c5c0;  1 drivers
-v0x2027da0_0 .net "notA1", 0 0, L_0x202c0a0;  1 drivers
-v0x2027e60_0 .net "out", 0 0, L_0x202cca0;  alias, 1 drivers
-S_0x2029430 .scope module, "tester" "testbenchBitSlice" 2 41, 2 71 0, S_0x1fe8100;
+L_0xeee9c0/d .functor NOT 1, v0xee96c0_0, C4<0>, C4<0>, C4<0>;
+L_0xeee9c0 .delay 1 (10000,10000,10000) L_0xeee9c0/d;
+L_0xeeeb20/d .functor NOT 1, v0xee9780_0, C4<0>, C4<0>, C4<0>;
+L_0xeeeb20 .delay 1 (10000,10000,10000) L_0xeeeb20/d;
+L_0xeeeb90/d .functor AND 1, v0xee96c0_0, v0xee9780_0, C4<1>, C4<1>;
+L_0xeeeb90 .delay 1 (20000,20000,20000) L_0xeeeb90/d;
+L_0xeeed80/d .functor AND 1, v0xee96c0_0, L_0xeeeb20, C4<1>, C4<1>;
+L_0xeeed80 .delay 1 (20000,20000,20000) L_0xeeed80/d;
+L_0xeeee90/d .functor AND 1, L_0xeee9c0, v0xee9780_0, C4<1>, C4<1>;
+L_0xeeee90 .delay 1 (20000,20000,20000) L_0xeeee90/d;
+L_0xeeeff0/d .functor AND 1, L_0xeee9c0, L_0xeeeb20, C4<1>, C4<1>;
+L_0xeeeff0 .delay 1 (20000,20000,20000) L_0xeeeff0/d;
+L_0xeef150/d .functor AND 1, L_0xeedcc0, L_0xeeeff0, C4<1>, C4<1>;
+L_0xeef150 .delay 1 (20000,20000,20000) L_0xeef150/d;
+L_0xeef260/d .functor AND 1, L_0xeee500, L_0xeeed80, C4<1>, C4<1>;
+L_0xeef260 .delay 1 (20000,20000,20000) L_0xeef260/d;
+L_0xeef410/d .functor AND 1, L_0xeee660, L_0xeeee90, C4<1>, C4<1>;
+L_0xeef410 .delay 1 (20000,20000,20000) L_0xeef410/d;
+L_0xeef570/d .functor AND 1, L_0xeee830, L_0xeeeb90, C4<1>, C4<1>;
+L_0xeef570 .delay 1 (20000,20000,20000) L_0xeef570/d;
+L_0xeef730/d .functor OR 1, L_0xeef150, L_0xeef260, L_0xeef410, L_0xeef570;
+L_0xeef730 .delay 1 (40000,40000,40000) L_0xeef730/d;
+v0xee9ca0_0 .net "A0andA1", 0 0, L_0xeeeb90;  1 drivers
+v0xee9d60_0 .net "A0andnotA1", 0 0, L_0xeeed80;  1 drivers
+v0xee9e20_0 .net "addr0", 0 0, v0xee96c0_0;  alias, 1 drivers
+v0xee9ef0_0 .net "addr1", 0 0, v0xee9780_0;  alias, 1 drivers
+v0xee9fc0_0 .net "in0", 0 0, L_0xeedcc0;  alias, 1 drivers
+v0xeea0b0_0 .net "in0and", 0 0, L_0xeef150;  1 drivers
+v0xeea150_0 .net "in1", 0 0, L_0xeee500;  alias, 1 drivers
+v0xeea1f0_0 .net "in1and", 0 0, L_0xeef260;  1 drivers
+v0xeea2b0_0 .net "in2", 0 0, L_0xeee660;  alias, 1 drivers
+v0xeea400_0 .net "in2and", 0 0, L_0xeef410;  1 drivers
+v0xeea4c0_0 .net "in3", 0 0, L_0xeee830;  alias, 1 drivers
+v0xeea580_0 .net "in3and", 0 0, L_0xeef570;  1 drivers
+v0xeea640_0 .net "notA0", 0 0, L_0xeee9c0;  1 drivers
+v0xeea700_0 .net "notA0andA1", 0 0, L_0xeeee90;  1 drivers
+v0xeea7c0_0 .net "notA0andnotA1", 0 0, L_0xeeeff0;  1 drivers
+v0xeea880_0 .net "notA1", 0 0, L_0xeeeb20;  1 drivers
+v0xeea940_0 .net "out", 0 0, L_0xeef730;  alias, 1 drivers
+S_0xeebf10 .scope module, "tester" "testbenchBitSlice" 2 44, 2 74 0, S_0xea0100;
  .timescale -9 -12;
     .port_info 0 /INPUT 1 "begintest"
     .port_info 1 /OUTPUT 1 "endtest"
@@ -149,20 +149,20 @@ S_0x2029430 .scope module, "tester" "testbenchBitSlice" 2 41, 2 71 0, S_0x1fe810
     .port_info 6 /OUTPUT 1 "a"
     .port_info 7 /OUTPUT 1 "b"
     .port_info 8 /OUTPUT 1 "carryin"
-v0x2029770_0 .var "a", 0 0;
-v0x2029860_0 .var "b", 0 0;
-v0x2029930_0 .net "begintest", 0 0, v0x202a240_0;  1 drivers
-v0x2029a00_0 .var "bitpassed", 0 0;
-v0x2029aa0_0 .var "carryin", 0 0;
-v0x2029b90_0 .net "carryout", 0 0, L_0x202b760;  alias, 1 drivers
-v0x2029c60_0 .var "control", 2 0;
-v0x2029d50_0 .var "endtest", 0 0;
-v0x2029df0_0 .net "sum", 0 0, L_0x202cca0;  alias, 1 drivers
-E_0x1ff13b0 .event edge, v0x2029930_0;
-    .scope S_0x1fe3a10;
+v0xeec250_0 .var "a", 0 0;
+v0xeec340_0 .var "b", 0 0;
+v0xeec410_0 .net "begintest", 0 0, v0xeecd20_0;  1 drivers
+v0xeec4e0_0 .var "bitpassed", 0 0;
+v0xeec580_0 .var "carryin", 0 0;
+v0xeec670_0 .net "carryout", 0 0, L_0xeee240;  alias, 1 drivers
+v0xeec740_0 .var "control", 2 0;
+v0xeec830_0 .var "endtest", 0 0;
+v0xeec8d0_0 .net "sum", 0 0, L_0xeef730;  alias, 1 drivers
+E_0xea93b0 .event edge, v0xeec410_0;
+    .scope S_0xe9ba10;
 T_0 ;
-    %wait E_0x1ff18b0;
-    %load/vec4 v0x1fe3c50_0;
+    %wait E_0xea98b0;
+    %load/vec4 v0xe9bc50_0;
     %dup/vec4;
     %pushi/vec4 0, 0, 3;
     %cmp/u;
@@ -198,402 +198,520 @@ T_0 ;
     %jmp T_0.8;
 T_0.0 ;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026be0_0, 0, 1;
+    %store/vec4 v0xee96c0_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026ca0_0, 0, 1;
+    %store/vec4 v0xee9780_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026d70_0, 0, 1;
+    %store/vec4 v0xee9850_0, 0, 1;
     %jmp T_0.8;
 T_0.1 ;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026be0_0, 0, 1;
+    %store/vec4 v0xee96c0_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026ca0_0, 0, 1;
+    %store/vec4 v0xee9780_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2026d70_0, 0, 1;
+    %store/vec4 v0xee9850_0, 0, 1;
     %jmp T_0.8;
 T_0.2 ;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2026be0_0, 0, 1;
+    %store/vec4 v0xee96c0_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2026ca0_0, 0, 1;
+    %store/vec4 v0xee9780_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026d70_0, 0, 1;
+    %store/vec4 v0xee9850_0, 0, 1;
     %jmp T_0.8;
 T_0.3 ;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026be0_0, 0, 1;
+    %store/vec4 v0xee96c0_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026ca0_0, 0, 1;
+    %store/vec4 v0xee9780_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2026d70_0, 0, 1;
+    %store/vec4 v0xee9850_0, 0, 1;
     %jmp T_0.8;
 T_0.4 ;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026be0_0, 0, 1;
+    %store/vec4 v0xee96c0_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2026ca0_0, 0, 1;
+    %store/vec4 v0xee9780_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026d70_0, 0, 1;
+    %store/vec4 v0xee9850_0, 0, 1;
     %jmp T_0.8;
 T_0.5 ;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026be0_0, 0, 1;
+    %store/vec4 v0xee96c0_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2026ca0_0, 0, 1;
+    %store/vec4 v0xee9780_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2026d70_0, 0, 1;
+    %store/vec4 v0xee9850_0, 0, 1;
     %jmp T_0.8;
 T_0.6 ;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2026be0_0, 0, 1;
+    %store/vec4 v0xee96c0_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026ca0_0, 0, 1;
+    %store/vec4 v0xee9780_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2026d70_0, 0, 1;
+    %store/vec4 v0xee9850_0, 0, 1;
     %jmp T_0.8;
 T_0.7 ;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2026be0_0, 0, 1;
+    %store/vec4 v0xee96c0_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026ca0_0, 0, 1;
+    %store/vec4 v0xee9780_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2026d70_0, 0, 1;
+    %store/vec4 v0xee9850_0, 0, 1;
     %jmp T_0.8;
 T_0.8 ;
     %pop/vec4 1;
     %jmp T_0;
     .thread T_0, $push;
-    .scope S_0x2029430;
+    .scope S_0xeebf10;
 T_1 ;
     %pushi/vec4 0, 0, 3;
-    %store/vec4 v0x2029c60_0, 0, 3;
+    %store/vec4 v0xeec740_0, 0, 3;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029770_0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029860_0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029aa0_0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
     %end;
     .thread T_1;
-    .scope S_0x2029430;
+    .scope S_0xeebf10;
 T_2 ;
-    %wait E_0x1ff13b0;
+    %wait E_0xea93b0;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029d50_0, 0, 1;
+    %store/vec4 v0xeec830_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029a00_0, 0, 1;
+    %store/vec4 v0xeec4e0_0, 0, 1;
     %delay 50000, 0;
-    %vpi_call 2 101 "$display", "///////////// ADD TESTS /////////////////////////" {0 0 0};
+    %vpi_call 2 104 "$display", "///////////// ADD TESTS /////////////////////////" {0 0 0};
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029770_0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029860_0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029aa0_0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 0, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 1, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 2, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %delay 1000000, 0;
-    %load/vec4 v0x2029df0_0;
+    %load/vec4 v0xeec8d0_0;
     %pad/u 32;
     %cmpi/ne 0, 0, 32;
     %flag_mov 8, 6;
-    %load/vec4 v0x2029b90_0;
+    %load/vec4 v0xeec670_0;
     %pad/u 32;
     %cmpi/ne 0, 0, 32;
     %flag_or 6, 8;
     %jmp/0xz  T_2.0, 6;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029a00_0, 0, 1;
-    %vpi_call 2 108 "$display", "Test Case 1 Failed 0+0" {0 0 0};
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 111 "$display", "Test Case 1 Failed 0+0" {0 0 0};
 T_2.0 ;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029770_0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029860_0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029aa0_0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 0, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 1, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 2, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %delay 1000000, 0;
-    %load/vec4 v0x2029df0_0;
+    %load/vec4 v0xeec8d0_0;
     %pad/u 32;
     %cmpi/ne 1, 0, 32;
     %flag_mov 8, 6;
-    %load/vec4 v0x2029b90_0;
+    %load/vec4 v0xeec670_0;
     %pad/u 32;
     %cmpi/ne 0, 0, 32;
     %flag_or 6, 8;
     %jmp/0xz  T_2.2, 6;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029a00_0, 0, 1;
-    %vpi_call 2 116 "$display", "Test Case 2 Failed 1+0" {0 0 0};
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 119 "$display", "Test Case 2 Failed 1+0" {0 0 0};
 T_2.2 ;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029770_0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029860_0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029aa0_0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 0, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 1, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 2, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %delay 1000000, 0;
-    %load/vec4 v0x2029df0_0;
+    %load/vec4 v0xeec8d0_0;
     %pad/u 32;
     %cmpi/ne 1, 0, 32;
     %flag_mov 8, 6;
-    %load/vec4 v0x2029b90_0;
+    %load/vec4 v0xeec670_0;
     %pad/u 32;
     %cmpi/ne 0, 0, 32;
     %flag_or 6, 8;
     %jmp/0xz  T_2.4, 6;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029a00_0, 0, 1;
-    %vpi_call 2 125 "$display", "Test Case 3 Failed 0+1" {0 0 0};
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 128 "$display", "Test Case 3 Failed 0+1" {0 0 0};
 T_2.4 ;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029770_0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029860_0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029aa0_0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 0, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 1, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 2, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %delay 1000000, 0;
-    %load/vec4 v0x2029df0_0;
+    %load/vec4 v0xeec8d0_0;
     %pad/u 32;
     %cmpi/ne 0, 0, 32;
     %flag_mov 8, 6;
-    %load/vec4 v0x2029b90_0;
+    %load/vec4 v0xeec670_0;
     %pad/u 32;
     %cmpi/ne 1, 0, 32;
     %flag_or 6, 8;
     %jmp/0xz  T_2.6, 6;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029a00_0, 0, 1;
-    %vpi_call 2 134 "$display", "Test Case 4 Failed 1+1" {0 0 0};
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 137 "$display", "Test Case 4 Failed 1+1" {0 0 0};
 T_2.6 ;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029770_0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029860_0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029aa0_0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 0, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 1, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 2, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %delay 1000000, 0;
-    %load/vec4 v0x2029df0_0;
+    %load/vec4 v0xeec8d0_0;
     %pad/u 32;
     %cmpi/ne 0, 0, 32;
     %flag_mov 8, 6;
-    %load/vec4 v0x2029b90_0;
+    %load/vec4 v0xeec670_0;
     %pad/u 32;
     %cmpi/ne 1, 0, 32;
     %flag_or 6, 8;
     %jmp/0xz  T_2.8, 6;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029a00_0, 0, 1;
-    %vpi_call 2 143 "$display", "Test Case 5 Failed 1+0 + CI" {0 0 0};
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 146 "$display", "Test Case 5 Failed 1+0 + CI" {0 0 0};
 T_2.8 ;
-    %vpi_call 2 146 "$display", "///////////// SUB TESTS /////////////////////////" {0 0 0};
+    %vpi_call 2 149 "$display", "///////////// SUB TESTS /////////////////////////" {0 0 0};
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029770_0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029860_0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029aa0_0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
     %pushi/vec4 1, 0, 1;
     %ix/load 4, 0, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 1, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 2, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %delay 1000000, 0;
-    %load/vec4 v0x2029df0_0;
+    %load/vec4 v0xeec8d0_0;
     %pad/u 32;
     %cmpi/ne 0, 0, 32;
     %flag_mov 8, 6;
-    %load/vec4 v0x2029b90_0;
+    %load/vec4 v0xeec670_0;
     %pad/u 32;
-    %cmpi/ne 0, 0, 32;
+    %cmpi/ne 1, 0, 32;
     %flag_or 6, 8;
     %jmp/0xz  T_2.10, 6;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029a00_0, 0, 1;
-    %vpi_call 2 154 "$display", "Test Case 1 Failed 0-0" {0 0 0};
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 157 "$display", "Test Case 1 Failed 0-0 %b  %b", v0xeec8d0_0, v0xeec670_0 {0 0 0};
 T_2.10 ;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029770_0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029860_0, 0, 1;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029aa0_0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
     %pushi/vec4 1, 0, 1;
     %ix/load 4, 0, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 1, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 2, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %delay 1000000, 0;
-    %load/vec4 v0x2029df0_0;
-    %pad/u 32;
-    %cmpi/ne 1, 0, 32;
-    %flag_mov 8, 6;
-    %load/vec4 v0x2029b90_0;
+    %load/vec4 v0xeec8d0_0;
     %pad/u 32;
     %cmpi/ne 0, 0, 32;
+    %flag_mov 8, 6;
+    %load/vec4 v0xeec670_0;
+    %pad/u 32;
+    %cmpi/ne 1, 0, 32;
     %flag_or 6, 8;
     %jmp/0xz  T_2.12, 6;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029a00_0, 0, 1;
-    %vpi_call 2 164 "$display", "Test Case 2 Failed 1-0" {0 0 0};
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 166 "$display", "Test Case 2 Failed 1-0 %b  %b", v0xeec8d0_0, v0xeec670_0 {0 0 0};
 T_2.12 ;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029770_0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029860_0, 0, 1;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029aa0_0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
     %pushi/vec4 1, 0, 1;
     %ix/load 4, 0, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 1, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 2, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %delay 1000000, 0;
-    %load/vec4 v0x2029df0_0;
+    %load/vec4 v0xeec8d0_0;
     %pad/u 32;
     %cmpi/ne 0, 0, 32;
     %flag_mov 8, 6;
-    %load/vec4 v0x2029b90_0;
+    %load/vec4 v0xeec670_0;
     %pad/u 32;
-    %cmpi/ne 1, 0, 32;
+    %cmpi/ne 0, 0, 32;
     %flag_or 6, 8;
     %jmp/0xz  T_2.14, 6;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029a00_0, 0, 1;
-    %vpi_call 2 173 "$display", "Test Case 3 Failed 0-1" {0 0 0};
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 175 "$display", "Test Case 3 Failed 0-1" {0 0 0};
 T_2.14 ;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029770_0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029860_0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029aa0_0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
     %pushi/vec4 1, 0, 1;
     %ix/load 4, 0, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 1, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %pushi/vec4 0, 0, 1;
     %ix/load 4, 2, 0;
     %flag_set/imm 4, 0;
-    %store/vec4 v0x2029c60_0, 4, 1;
+    %store/vec4 v0xeec740_0, 4, 1;
     %delay 1000000, 0;
-    %load/vec4 v0x2029df0_0;
+    %load/vec4 v0xeec8d0_0;
     %pad/u 32;
     %cmpi/ne 0, 0, 32;
     %flag_mov 8, 6;
-    %load/vec4 v0x2029b90_0;
+    %load/vec4 v0xeec670_0;
     %pad/u 32;
-    %cmpi/ne 0, 0, 32;
+    %cmpi/ne 1, 0, 32;
     %flag_or 6, 8;
     %jmp/0xz  T_2.16, 6;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x2029a00_0, 0, 1;
-    %vpi_call 2 182 "$display", "Test Case 4 Failed 1-1" {0 0 0};
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 184 "$display", "Test Case 4 Failed 1-1" {0 0 0};
 T_2.16 ;
-    %vpi_call 2 187 "$display", "///////////// XOR TESTS /////////////////////////" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 2, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %delay 1000000, 0;
+    %load/vec4 v0xeec8d0_0;
+    %pad/u 32;
+    %cmpi/ne 1, 0, 32;
+    %flag_mov 8, 6;
+    %load/vec4 v0xeec670_0;
+    %pad/u 32;
+    %cmpi/ne 0, 0, 32;
+    %flag_or 6, 8;
+    %jmp/0xz  T_2.18, 6;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 192 "$display", "Test Case 5 Failed 0-0 CN = 0 %b  %b", v0xeec8d0_0, v0xeec670_0 {0 0 0};
+T_2.18 ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 2, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %delay 1000000, 0;
+    %load/vec4 v0xeec8d0_0;
+    %pad/u 32;
+    %cmpi/ne 1, 0, 32;
+    %flag_mov 8, 6;
+    %load/vec4 v0xeec670_0;
+    %pad/u 32;
+    %cmpi/ne 1, 0, 32;
+    %flag_or 6, 8;
+    %jmp/0xz  T_2.20, 6;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 201 "$display", "Test Case 6 Failed 1-0 CN=1 %b  %b", v0xeec8d0_0, v0xeec670_0 {0 0 0};
+T_2.20 ;
+    %vpi_call 2 207 "$display", "///////////// XOR TESTS /////////////////////////" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %pushi/vec4 1, 0, 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 2, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %delay 1000000, 0;
+    %load/vec4 v0xeec8d0_0;
+    %pad/u 32;
+    %cmpi/ne 0, 0, 32;
+    %jmp/0xz  T_2.22, 6;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 214 "$display", "Test Case 1 Failed xor 1,1" {0 0 0};
+T_2.22 ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xeec250_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec340_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec580_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %pushi/vec4 1, 0, 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %pushi/vec4 0, 0, 1;
+    %ix/load 4, 2, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0xeec740_0, 4, 1;
+    %delay 1000000, 0;
+    %load/vec4 v0xeec8d0_0;
+    %pad/u 32;
+    %cmpi/ne 1, 0, 32;
+    %jmp/0xz  T_2.24, 6;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xeec4e0_0, 0, 1;
+    %vpi_call 2 222 "$display", "Test Case 2 Failed xor 1,0" {0 0 0};
+T_2.24 ;
     %delay 5000, 0;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x2029d50_0, 0, 1;
+    %store/vec4 v0xeec830_0, 0, 1;
     %end;
     .thread T_2;
-    .scope S_0x1fe8100;
+    .scope S_0xea0100;
 T_3 ;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x202a240_0, 0, 1;
+    %store/vec4 v0xeecd20_0, 0, 1;
     %delay 10000, 0;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x202a240_0, 0, 1;
+    %store/vec4 v0xeecd20_0, 0, 1;
     %delay 1000000, 0;
     %end;
     .thread T_3;
-    .scope S_0x1fe8100;
+    .scope S_0xea0100;
 T_4 ;
-    %wait E_0x1ff25b0;
-    %vpi_call 2 63 "$display", "Bit Sliced passed?: %b", v0x202a2e0_0 {0 0 0};
+    %wait E_0xeaa5b0;
+    %vpi_call 2 66 "$display", "Bit Sliced passed?: %b", v0xeecdc0_0 {0 0 0};
     %jmp T_4;
     .thread T_4, $push;
 # The file index is used to find the file name in the following table.
