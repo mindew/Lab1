@@ -152,7 +152,7 @@ output reg carryin
   // Test Case 1:
   a=0;b=0;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 0) || (carryout !== 0)) begin
+  if(( sum !== 0) || (carryout !== 1)) begin
     bitpassed = 0;
     $display("Test Case 1 Failed 0-0 %b  %b", sum, carryout);
   end
@@ -160,18 +160,18 @@ output reg carryin
 
 
   // Test Case 2:
-  a=1;b=0;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
+  a=1;b=0;carryin=0;control[0]=1;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 1) || (carryout !== 0)) begin
+  if(( sum !== 0) || (carryout !== 1)) begin
     bitpassed = 0;
     $display("Test Case 2 Failed 1-0");
   end
 
 
   // Test Case 3:
-  a=0;b=1;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
+  a=0;b=1;carryin=0;control[0]=1;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 0) || (carryout !== 1)) begin
+  if(( sum !== 0) || (carryout !== 0)) begin
     bitpassed = 0;
     $display("Test Case 3 Failed 0-1");
   end
@@ -180,7 +180,7 @@ output reg carryin
   // Test Case 4:
   a=1;b=1;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
 
-  if(( sum !== 0) || (carryout !== 0)) begin
+  if(( sum !== 0) || (carryout !== 1)) begin
     bitpassed = 0;
     $display("Test Case 4 Failed 1-1");
   end

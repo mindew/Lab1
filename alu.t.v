@@ -53,6 +53,7 @@ module testALU();
     ALU alu(
       .result(result),
       .carryout(carryout),
+      .zero(zero),
       .overflow(overflow),
       .operandA(operandA),
       .operandB(operandB),
@@ -68,6 +69,7 @@ module testALU();
         .alupassed(alupassed),
         .result(result),
         .carryout(carryout),
+        .zero(zero),
         .overflow(overflow),
         .operandA(operandA),
         .operandB(operandB),
@@ -137,7 +139,7 @@ output reg[2:0]    command
 
   if(( result !== 32'd0) || (carryout !== 0) || (overflow !==0) || (zero !== 1)) begin // inputs????
     alupassed = 0;
-    $display("Test Case 1 Failed 0+0 co %b of %b z %b", carryout, overflow, zero);
+    $display("Test Case 1 Failed 0+0");
     $display("Result %b",result);
   end
 
@@ -150,7 +152,7 @@ output reg[2:0]    command
 
   if(( result !== 32'd200) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin // inputs????
     alupassed = 0;
-    $display("Test Case 2 Failed 300-100");
+    $display("Test Case 2 Failed 300-100 co %b of %b z %b", carryout, overflow, zero);
     $display("Result %b",result);
   end
 
@@ -199,7 +201,7 @@ output reg[2:0]    command
     command=3'b101;
     #1000
 
-  if(( result !== 32'b011100011) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin
+  if(( result !== 32'b11111111111111111111111011100011) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin
     alupassed = 0;
     $display("Test Case 6 Failed NAND");
     $display("Result %b",result);
@@ -222,10 +224,10 @@ output reg[2:0]    command
   // Test Case 8 NOR: should return 000000000
     operandA=32'b100011100;
     operandB=32'b111111111;
-    command=3'b111;
+    command=3'b110;
     #1000
 
-  if(( result !== 32'b000000000) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin
+  if(( result !== 32'b11111111111111111111111000000000) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin
     alupassed = 0;
     $display("Test Case Failed NOR");
     $display("Reuslt %b",result);

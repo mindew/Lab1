@@ -74,20 +74,24 @@ module structuralBitSlice
 
 );
 
- wire AxorB2, AxorBxorC, AxorBC, AB, notControl1, notControl2, subtract, newB;
- wire sumval, address0, address1, invert, nandand, noror, AxorB, AorB;
+ wire AxorB2, AxorBxorC, AxorBC, AB, notControl1, notControl2, subtract, newB, AnewB;
+ wire sumval, address0, address1, invert, nandand, noror, AxorB, AorB, suborslt, slt, notControl0;
  ALUcontrolLUT mylut(address0, address1, invert, control);
 
  // values for sum, subtract, and slt
  `NOT notGate(notControl1, control[1]);
  `NOT notGate2(notControl2, control[2]);
+ `NOT notGate3(notControl0, control[0]);
  `AND3 andGate(subtract, control[0], notControl1, notControl2);
- `XOR xorGate(newB, subtract, b);
+ `AND3 andGateslt(slt, control[0], control[1], notControl2);
+ `OR orGatesub(suborslt, subtract, slt);
+ `XOR xorGate(newB, suborslt, b);
  `XOR xorGate1(AxorB2, a, newB);
  `XOR xorGate2(sumval, AxorB2, carryin);
  `AND andGate1(AB, a, b);
+ `AND andGateb(AnewB, a, newB);
  `AND andGate2(AxorBC, carryin, AxorB2);
- `OR orGate( carryout, AB, AxorBC);
+ `OR orGate( carryout, AnewB, AxorBC);
 
  // values for or and nor
  `OR orGate(AorB, a, b);
