@@ -37,15 +37,17 @@ input[31:0]   operandB,   // second input bitstream
 input[2:0]    command     // 3 bits control signal
 );
 
-  wire notCommand1, notCommand2, subtract;
+  wire notCommand1, notCommand2, subtract, slt, suborslt;
   wire[31:0] carryoutArray;
 
   // get the value of subtract
   `NOT notGate(notCommand1, command[1]);
   `NOT notGate2(notCommand2, command[2]);
   `AND3 andGate(subtract, command[0], notCommand1, notCommand2);
+  `AND3 andGateslt(slt, command[0], command[1], notCommand2);
+  `OR orGatesub(suborslt, subtract, slt);
 
-  structuralBitSlice bitslice1(result[0], carryoutArray[0], command, operandA[0], operandB[0], subtract);
+  structuralBitSlice bitslice1(result[0], carryoutArray[0], command, operandA[0], operandB[0], suborslt);
 
   genvar i;
   generate

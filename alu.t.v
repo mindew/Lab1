@@ -179,7 +179,7 @@ output reg[2:0]    command
 
   if(( result !== 32'b1) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin
     alupassed = 0;
-    $display("Test Case 4 Failed SLT");
+    $display("Test Case 4 Failed SLT  zero %b", zero);
     $display("Result %b",result);
   end
 
