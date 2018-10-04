@@ -158,13 +158,12 @@ output reg carryin
   end
 
 
-
   // Test Case 2:
   a=1;b=0;carryin=0;control[0]=1;control[1]=0;control[2]=0; #1000
 
   if(( sum !== 0) || (carryout !== 1)) begin
     bitpassed = 0;
-    $display("Test Case 2 Failed 1-0");
+    $display("Test Case 2 Failed 1-0 %b  %b", sum, carryout);
   end
 
 
@@ -184,6 +183,24 @@ output reg carryin
     bitpassed = 0;
     $display("Test Case 4 Failed 1-1");
   end
+
+  // Test Case 5:
+  a=0;b=0;carryin=0;control[0]=1;control[1]=0;control[2]=0; #1000
+
+  if(( sum !== 1) || (carryout !== 0)) begin
+    bitpassed = 0;
+    $display("Test Case 5 Failed 0-0 CN = 0 %b  %b", sum, carryout);
+  end
+
+
+  // Test Case 6:
+  a=1;b=0;carryin=1;control[0]=1;control[1]=0;control[2]=0; #1000
+
+  if(( sum !== 1) || (carryout !== 1)) begin
+    bitpassed = 0;
+    $display("Test Case 6 Failed 1-0 CN=1 %b  %b", sum, carryout);
+  end
+
 
   ////////////////////////////// XOR TESTS //////////////////////////////////////////////////////
 

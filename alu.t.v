@@ -131,7 +131,7 @@ output reg[2:0]    command
     #10
 
 
-  // Test Case 1 ADD: 32bits of 0 + 32bits of 0
+  // Test Case 1a ADD: 32bits of 0 + 32bits of 0
     operandA=32'd0;
     operandB=32'd0;
     command=3'b000;
@@ -139,31 +139,56 @@ output reg[2:0]    command
 
   if(( result !== 32'd0) || (carryout !== 0) || (overflow !==0) || (zero !== 1)) begin // inputs????
     alupassed = 0;
-    $display("Test Case 1 Failed 0+0");
+    $display("Test Case 1a Failed 0+0");
+    $display("Result %b",result);
+  end
+
+  // Test Case 1b ADD: 32bits of 1 + 32bits of 1
+    operandA=32'b11111111111111111111111111111111;;
+    operandB=32'b11111111111111111111111111111111;;
+    command=3'b000;
+    #1000
+
+  if(( result !== 32'b11111111111111111111111111111110;) || (carryout !== 1) || (overflow !==1) || (zero !== 0)) begin
+    alupassed = 0;
+    $display("Test Case 1b Failed 111...11+111...11");
     $display("Result %b",result);
   end
 
 
-  // Test Case 2 SUB: 32bits of d300 - 32bits of d100
+  // Test Case 2a SUB: 32bits of d300 - 32bits of d100
     operandA=32'd300;
     operandB=32'd100;
-    command=3'b001; // TODO: PUT COMMMAND HERE FOR ADDING
+    command=3'b001;
     #1000
 
-  if(( result !== 32'd200) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin // inputs????
+  if(( result !== 32'd200) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin 
+    alupassed = 0;
+    $display("Test Case 2a Failed 300-100 co %b of %b z %b", carryout, overflow, zero);
+    $display("Result %b",result);
+  end
+
+  // Test Case 2b SUB: 32bits of d300 - 32bits of d100
+    operandA=32'd100;
+    operandB=32'd300;
+    command=3'b001;
+    #1000
+
+  if(( result !== 32'd200) || (carryout !== 0) || (overflow !==1) || (zero !== 0)) begin 
     alupassed = 0;
     $display("Test Case 2 Failed 300-100 co %b of %b z %b", carryout, overflow, zero);
     $display("Result %b",result);
   end
 
 
+
   // Test Case 3 XOR: should return 011100011
     operandA=32'b100011100;
     operandB=32'b111111111;
-    command=3'b010; // TODO: PUT COMMMAND HERE FOR ADDING
+    command=3'b010;
     #1000
 
-  if(( result !== 32'b011100011) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin // inputs????
+  if(( result !== 32'b011100011) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin 
     alupassed = 0;
     $display("Test Case 3 Failed XOR");
     $display("Result %b",result);
