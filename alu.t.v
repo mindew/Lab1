@@ -111,34 +111,34 @@ output reg[2:0]    command
     command=3'b000;
     #1000
 
-  if(( result !== 32'b11111111111111111111111111111110;) || (carryout !== 1) || (overflow !==1) || (zero !== 0)) begin
+  if(( result !== 32'b11111111111111111111111111111110) || (carryout !== 1) || (overflow !==0) || (zero !== 0)) begin
     alupassed = 0;
     $display("Test Case 1b Failed 111...11+111...11");
     $display("Result %b",result);
   end
 
-
   // Test Case 2a SUB: 32bits of d300 - 32bits of d100
-    operandA=32'd300;
-    operandB=32'd100;
+    operandA=32'b100101100;
+    operandB=32'b1100100;
     command=3'b001;
-    #1000
+    #2000
 
-  if(( result !== 32'd200) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin 
+  if(( result !== 32'd200) || (carryout !== 1) || (overflow !==0) || (zero !== 0)) begin
     alupassed = 0;
     $display("Test Case 2a Failed 300-100 co %b of %b z %b", carryout, overflow, zero);
     $display("Result %b",result);
   end
 
+
   // Test Case 2b SUB: 32bits of d300 - 32bits of d100
     operandA=32'd100;
     operandB=32'd300;
     command=3'b001;
-    #1000
+    #2000
 
-  if(( result !== 32'd200) || (carryout !== 0) || (overflow !==1) || (zero !== 0)) begin 
+  if(( result !== -32'd200) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin
     alupassed = 0;
-    $display("Test Case 2 Failed 300-100 co %b of %b z %b", carryout, overflow, zero);
+    $display("Test Case 2b Failed 100-300 co %b of %b z %b", carryout, overflow, zero);
     $display("Result %b",result);
   end
 
@@ -150,7 +150,7 @@ output reg[2:0]    command
     command=3'b010;
     #1000
 
-  if(( result !== 32'b011100011) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin 
+  if(( result !== 32'b011100011) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin
     alupassed = 0;
     $display("Test Case 3 Failed XOR");
     $display("Result %b",result);
@@ -158,15 +158,27 @@ output reg[2:0]    command
 
 
 
-  // Test Case 4 SLT: should return 1
+  // Test Case 4a SLT: should return 0, 200 is not less than 100
     operandA=32'd200;
     operandB=32'd100;
     command=3'b011;
-    #1000
+    #2000
 
-  if(( result !== 32'b1) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin
+  if(( result[31] !== 32'b0)) begin
     alupassed = 0;
-    $display("Test Case 4 Failed SLT  zero %b", zero);
+    $display("Test Case 4a Failed SLT ");
+    $display("Result %b",result);
+  end
+
+  // Test Case 4a SLT: should return 1, 100 is less than 200
+    operandA=32'd100;
+    operandB=32'd200;
+    command=3'b011;
+    #2000
+
+  if(( result[31] !== 32'b1)) begin
+    alupassed = 0;
+    $display("Test Case 4b Failed SLT ");
     $display("Result %b",result);
   end
 
