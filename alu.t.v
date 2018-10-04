@@ -88,6 +88,8 @@ output reg[2:0]    command
 
   // Once 'begintest' is asserted, start running test cases
   always @(begintest) begin // TODO:always @(posedge begintest) begin
+  $dumpfile("alu.vcd");
+  $dumpvars();
     endtest = 0;
     alupassed = 1;
     #10
@@ -235,6 +237,9 @@ output reg[2:0]    command
 
   #5
   endtest = 1;
+  $finish();
+
   end
+
 
 endmodule
