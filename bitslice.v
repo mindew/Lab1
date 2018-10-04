@@ -1,9 +1,9 @@
-`define AND and #20
-`define OR or #20
+`define AND and #30
+`define OR or #30
 `define NOT not #10
-`define XOR xor #20
-`define AND3 and #30
-`define OR4 or #40
+`define XOR xor #60
+`define AND3 and #40
+`define OR4 or #50
 
 `define ADD_ALU  3'd0
 `define SUB_ALU  3'd1
