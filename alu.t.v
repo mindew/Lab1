@@ -2,7 +2,7 @@
 `timescale 1 ns / 1 ps
 `include "alu.v"
 
-// potential issues: type mismatch --> backward declaration? 
+// potential issues: type mismatch --> backward declaration?
 // command A & B are initially declared as decimal.... --> they're being called as binary later
 // operations such as SLT should return only one bit
 
@@ -11,16 +11,16 @@
 //   wire[31:0]  result;
 //   wire        carryout, zero, overflow;
 //   reg[31:0]   operandA, operandB;
-//   reg[2:0]    command; 
+//   reg[2:0]    command;
 
 
 //   // Instantiate ALU register file
 //   ALU alu(
-//     .result(result), 
-//     .carryout(carryout), 
-//     .overflow(overflow), 
-//     .operandA(operandA), 
-//     .operandB(operandB), 
+//     .result(result),
+//     .carryout(carryout),
+//     .overflow(overflow),
+//     .operandA(operandA),
+//     .operandB(operandB),
 //     .command(command)
 //     );
 
@@ -41,28 +41,28 @@ module testALU();
     wire [31:0] operandA;     // first bitstream
     wire [31:0] operandB;     // second bitstream
     wire [2:0] command;       // 3 bits control signal
-    wire [31:0] result;       // result 
+    wire [31:0] result;       // result
     wire carryout;            // carryout bits
-    wire zero;                
+    wire zero;
     wire overflow;            // overflow bits
-    reg   begintest;      
-    wire    endtest;     
-    wire    alupassed; 
+    reg   begintest;
+    wire    endtest;
+    wire    alupassed;
 
-    // Instantiate ALU register file 
+    // Instantiate ALU register file
     ALU alu(
-      .result(result), 
-      .carryout(carryout), 
-      .overflow(overflow), 
-      .operandA(operandA), 
-      .operandB(operandB), 
+      .result(result),
+      .carryout(carryout),
+      .overflow(overflow),
+      .operandA(operandA),
+      .operandB(operandB),
       .command(command)
       );
 
 
     // Instantiate test bench
     lab1testbench tester
-    ( 
+    (
         .begintest(begintest),
         .endtest(endtest),
         .alupassed(alupassed),
@@ -82,7 +82,7 @@ module testALU();
         begintest=1;
         #1000;
     end
-    
+
     // Display test results ('alupassed' signal) once 'endtest' goes high
     always @(endtest) begin
         $display("ALU test passed?: %b", alupassed);
@@ -127,7 +127,7 @@ output reg[2:0]    command
     endtest = 0;
     alupassed = 1;
     #10
-  
+
 
   // Test Case 1 ADD: 32bits of 0 + 32bits of 0
     operandA=32'd0;
@@ -135,14 +135,14 @@ output reg[2:0]    command
     command=3'b000;
     #1000
 
-  if(( result !== 32'd0) || (carryout !== 0) || (overflow !==0) || (zero !== 0)) begin // inputs????
+  if(( result !== 32'd0) || (carryout !== 0) || (overflow !==0) || (zero !== 1)) begin // inputs????
     alupassed = 0;
-    $display("Test Case 1 Failed 0+0");
+    $display("Test Case 1 Failed 0+0 co %b of %b z %b", carryout, overflow, zero);
     $display("Result %b",result);
   end
 
 
-  // Test Case 2 SUB: 32bits of d300 - 32bits of d100 
+  // Test Case 2 SUB: 32bits of d300 - 32bits of d100
     operandA=32'd300;
     operandB=32'd100;
     command=3'b001; // TODO: PUT COMMMAND HERE FOR ADDING
@@ -169,7 +169,7 @@ output reg[2:0]    command
 
 
 
-  // Test Case 4 SLT: should return 1 
+  // Test Case 4 SLT: should return 1
     operandA=32'd200;
     operandB=32'd100;
     command=3'b011;
@@ -181,7 +181,7 @@ output reg[2:0]    command
     $display("Result %b",result);
   end
 
-  // Test Case 5 AND: should return 100011100  
+  // Test Case 5 AND: should return 100011100
     operandA=32'b100011100;
     operandB=32'b111111111;
     command=3'b100;
@@ -193,7 +193,7 @@ output reg[2:0]    command
     $display("Result %b",result);
   end
 
-  // Test Case 6 NAND: should return 011100011 
+  // Test Case 6 NAND: should return 011100011
     operandA=32'b100011100;
     operandB=32'b111111111;
     command=3'b101;

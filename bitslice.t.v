@@ -190,7 +190,7 @@ output reg carryin
     $display("///////////// XOR TESTS /////////////////////////");
 
   // Test Case 1:
-  a=1;b=1;carryin=0;control[0]=0;control[1]=1;control[2]=1; #1000
+  a=1;b=1;carryin=0;control[0]=0;control[1]=1;control[2]=0; #1000
 
   if(( sum !== 0)) begin
     bitpassed = 0;
@@ -198,7 +198,7 @@ output reg carryin
   end
 
   // Test Case 2:
-  a=1;b=0;carryin=0;control[0]=1;control[1]=1;control[2]=0; #1000
+  a=1;b=0;carryin=0;control[0]=0;control[1]=1;control[2]=0; #1000
 
   if(( sum !== 1)) begin
     bitpassed = 0;
